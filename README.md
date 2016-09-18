@@ -8,17 +8,14 @@ This python script is written to organize and repair some additional files usual
 Currently it repairs 2 set of movie additions:
 
 1. It renames jpg poster of movie to the exact filename of movie; If more than 1 jpg file is present, it retains last one and deletes others. By using this correction, FileBot can relate jpg file to movie name and rename/move it according to movie file.
-
-...Ex. In the picture below, you can see 2 jpg files whose name doesn't match filename of movie, and hence FileBot can't raname them alongside the movie.
+   Ex. In the picture below, you can see 2 jpg files whose name doesn't match filename of movie, and hence FileBot can't raname them alongside the movie.
 ![jpgs_before_script](./readme_pics/jpgs_before_script.png "Jpgs before script")
-...But after using this script redundant jpg files are removed and the only one is recognized in FileBot.
+   But after using this script redundant jpg files are removed and the only one is recognized in FileBot.
 ![jpgs_after_script](./readme_pics/jpgs_after_script.png "Jpgs after script")
-
 2. It detects Persian/Arabic subtitles in "Windows-1256" encoding and re-encodes them to "UTF-8"; Therefor they can generally be displayed in most video players ever.
-
-...Ex. In the picture below, you can see a persian srt subtitle in "Windows-1256" encoding, which can't be displayed correctly by the text-editor (and video player).
+   Ex. In the picture below, you can see a persian srt subtitle in "Windows-1256" encoding, which can't be displayed correctly by the text-editor (and video player).
 ![srt_windows-1256_before_script](./readme_pics/srt_windows-1256_before_script.png "Srt Windows-1256 before script")
-...But after applying this script, the Arabic encoding of the file got detected by some heuristics and corrected to "UTF-8" encoding, which then could be displayed rightly by the text-editor and video player.
+   But after applying this script, the Arabic encoding of the file got detected by some heuristics and corrected to "UTF-8" encoding, which then could be displayed rightly by the text-editor and video player.
 ![srt_utf-8_after_script](./readme_pics/srt_utf-8_after_script.png "Srt UTF-8 after script")
 
 ## How to use?
