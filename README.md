@@ -25,6 +25,7 @@ Currently it repairs 2 set of movie additions:
 This script is written in Python3 and has used some of its libraries. So if you want to use it be sure to have python3 libraries below installed:
 * chardet: A lib that tries to detect encoding of a file
 * termcolor: Used to show colored texts in terminal outputs
+
 If you use Ubuntu or any comparable GNU/Linux distro with pip installed, you can install them simply by running command:
 ```bash
 sudo pip3 install chardet termcolor
