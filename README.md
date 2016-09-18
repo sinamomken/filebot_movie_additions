@@ -14,6 +14,7 @@ Currently it repairs 2 set of movie additions:
    But after using this script redundant jpg files are removed and the only one is recognized in FileBot.
 ![jpgs_after_script](./readme_pics/jpgs_after_script.png "Jpgs after script")
 2. It detects Persian/Arabic subtitles in "Windows-1256" encoding and re-encodes them to "UTF-8"; Therefor they can generally be displayed in most video players ever.
+
    Ex. In the picture below, you can see a persian srt subtitle in "Windows-1256" encoding, which can't be displayed correctly by the text-editor (and video player).
 ![srt_windows-1256_before_script](./readme_pics/srt_windows-1256_before_script.png "Srt Windows-1256 before script")
    But after applying this script, the Arabic encoding of the file got detected by some heuristics and corrected to "UTF-8" encoding, which then could be displayed rightly by the text-editor and video player.
