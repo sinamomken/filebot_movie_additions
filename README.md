@@ -8,6 +8,7 @@ This python script is written to organize and repair some additional files usual
 Currently it repairs 2 set of movie additions:
 
 1. It renames jpg poster of movie to the exact filename of movie; If more than 1 jpg file is present, it retains last one and deletes others. By using this correction, FileBot can relate jpg file to movie name and rename/move it according to movie file.
+
    Ex. In the picture below, you can see 2 jpg files whose name doesn't match filename of movie, and hence FileBot can't raname them alongside the movie.
 ![jpgs_before_script](./readme_pics/jpgs_before_script.png "Jpgs before script")
    But after using this script redundant jpg files are removed and the only one is recognized in FileBot.
