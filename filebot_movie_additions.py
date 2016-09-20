@@ -4,50 +4,57 @@ import sys, os, re
 import chardet
 from termcolor import colored
 
-def rename_jpg(dir):
-    print(colored('1. Removing extra jpg files and renaming the only remained jpg:', 'blue'))
-    last_jpg = ''
+def rename_image(dir):
+    print(colored('1. Removing extra image files and renaming the only remained image:', 'blue'))
+    last_image = ''
+    last_image_suffix = ''
     found_movie = ''
     num_of_movies = 0
-    num_of_jpgs = 0
+    num_of_images = 0
     if os.path.isdir(dir) == True:
         for subdir, dirs, files in os.walk(dir):
             # resetting counters
-            num_of_jpgs = 0
+            num_of_images = 0
             num_of_movies = 0
 
-            # finding last_jpg
+            # finding last_image
             for file in files:
-                if re.match(r'^(.*)\.(jpg|jpeg)$',file):
-                    #print('Jpg file found: ' + os.path.join(subdir, file))
-                    last_jpg = file
-                    num_of_jpgs += 1
+                if re.match(r'^(.*)\.(jpg|jpeg|JPG|JPEG)$', file):
+                    #print('Image file found: ' + os.path.join(subdir, file))
+                    last_image = file
+                    last_image_suffix = '.jpg'
+                    num_of_images += 1
+                if re.match(r'^(.*)\.(png|PNG)$', file):
+                    # print('Image file found: ' + os.path.join(subdir, file))
+                    last_image = file
+                    last_image_suffix = '.png'
+                    num_of_images += 1
 
             # finding movie files
             for file in files:
-                if re.match(r'^(.*)\.(mkv|avi|mp4|wmv)$', file):
+                if re.match(r'^(.*)\.(mkv|avi|mp4|wmv|MKV|AVI|MP4|WMV)$', file):
                     found_movie = file[:-4]
                     num_of_movies += 1
 
-            if num_of_jpgs > 0:
+            if num_of_images > 0:
                 if num_of_movies == 1:
                     print(colored('Only movie found: ', 'green') + found_movie)
-                    print(colored('Rename ', 'green') + os.path.join(subdir,last_jpg)
-                          + colored(' to ', 'green') + os.path.join(subdir,found_movie+'.jpg'))
-                    # renaming jpg to the only movie name
-                    os.rename(os.path.join(subdir,last_jpg), os.path.join(subdir,found_movie+'.jpg'))
+                    print(colored('Rename ', 'green') + os.path.join(subdir,last_image)
+                          + colored(' to ', 'green') + os.path.join(subdir,found_movie + last_image_suffix))
+                    # renaming image to the only movie name
+                    os.rename(os.path.join(subdir,last_image), os.path.join(subdir,found_movie + last_image_suffix))
 
-                    # deleting all jpgs except last_jgp
+                    # deleting all images except last_image
                     for file in files:
-                        if re.match(r'^(.*)\.(jpg|jpeg)$', file) and file != last_jpg:
-                            print(colored('Redundant jpg file removed: ', 'yellow') + os.path.join(subdir, file))
+                        if re.match(r'^(.*)\.(jpg|jpeg|JPG|JPEG|png|PNG)$', file) and file != last_image:
+                            print(colored('Redundant image file removed: ', 'yellow') + os.path.join(subdir, file))
                             os.remove(os.path.join(subdir, file))
                 elif num_of_movies == 0:
                     print(colored('No movie in dir ', 'red') + subdir)
                 else:
                     print(colored('More than 1 movie in dir ', 'red') + subdir)
             else:
-                print(colored('No jpg found in ', 'red') + subdir)
+                print(colored('No image found in ', 'red') + subdir)
             print('')
     else:
         print("MyError: not dir")
@@ -99,6 +106,6 @@ def correct_persian_endoding(file_abspath):
 
 if __name__ == "__main__":
     dir = sys.argv[1]
-    rename_jpg(dir)
+    rename_image(dir)
     detect_persian_encodings(dir)
 
